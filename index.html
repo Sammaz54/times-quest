@@ -404,6 +404,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
   <div class="feedback-text" id="feedback-text"></div>
   <div class="feedback-sub" id="feedback-sub"></div>
 </div>
+
 <script>
 // ── LOCAL STORAGE ────────────────────────────────────────
 // All players & scores are saved on this device only — no accounts, no cloud.
@@ -572,7 +573,10 @@ function nextQ(){
   document.getElementById('pts-preview').innerHTML='Up to <span>'+maxPts(da,db,G.op)+'</span> pts';
   document.getElementById('level-badge').textContent='QUESTION '+(G.qNum+1)+'/'+TOTAL_Q;
   document.getElementById('prog-fill').style.width=((G.qNum/TOTAL_Q)*100)+'%';
-  startTimer(); G.qNum++; // ── TIMER ────────────────────────────────────────────────
+  startTimer(); G.qNum++;
+}
+
+// ── TIMER ────────────────────────────────────────────────
 function startTimer(){
   clearTimer(); G.timer=DCFG[G.diff].time; updTimer();
   G.tint=setInterval(()=>{ G.timer--; updTimer(); if(G.timer<=0){clearTimer();handleWrong(true);} },1000);
@@ -802,4 +806,3 @@ if(CU) goHome(); else showPlayerPicker();
 </script>
 </body>
 </html>
-}
